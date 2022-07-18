@@ -393,7 +393,7 @@ function dd_test {
 }
 
 # check if disk performance is being tested and the host has required space (2G)
-AVAIL_SPACE=`df -k . | awk 'NR==2{print $4}'`
+AVAIL_SPACE=`df -k . | awk 'NR==3{print $3}'`
 if [[ -z "$SKIP_FIO" && "$AVAIL_SPACE" -lt 2097152 && "$ARCH" != "aarch64" && "$ARCH" != "arm" ]]; then # 2GB = 2097152KB
 	echo -e "\nLess than 2GB of space available. Skipping disk test..."
 elif [[ -z "$SKIP_FIO" && "$AVAIL_SPACE" -lt 524288 && ("$ARCH" = "aarch64" || "$ARCH" = "arm") ]]; then # 512MB = 524288KB
